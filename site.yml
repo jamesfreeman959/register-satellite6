@@ -1,0 +1,8 @@
+---
+- name: Playbook to register Satellite 6 clients to the host
+  hosts: all
+  become: true
+
+  roles:
+    - sat6register
+
