@@ -12,7 +12,7 @@
     dest: /usr/local/sbin/bootstrap.py
   when: hostgroup != 'false'
   register: get_url_result
-  until: get_url_result | succeeded
+  until: get_url_result is succeeded
   retries: 10
   delay: 1
   ignore_errors: yes
@@ -48,7 +48,7 @@
   yum:
     name: katello-agent
     state: latest
-  when: hostgroup == 'false' and reg_return|success
+  when: hostgroup == 'false' and reg_return is succeeded
   notify:
     - Start katello-agent
     - Enable katello-agent
